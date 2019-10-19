@@ -1,5 +1,5 @@
 import React from "react";
-import { useFirebaseInit } from "../../hooks/useFirebase";
+import { useFirebaseInit } from "../../hooks/useFirebaseInit";
 
 import { App } from "./App";
 import { AppLoading } from "./AppLoading";

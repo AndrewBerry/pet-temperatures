@@ -1,10 +1,12 @@
 import React from "react";
-import { Router } from "../Router/Router";
+import { PetContainer } from "../Pet/PetContainer";
+
+import "./App.css";
 
 export function App() {
   return (
     <div className="App">
-      <Router />
+      <PetContainer petId="cynthia" />
     </div>
   );
 }

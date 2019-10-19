@@ -4,13 +4,12 @@ const admin = require("firebase-admin");
 admin.initializeApp();
 
 exports.submitDataPoint = functions.https.onRequest(async (req, res) => {
-  const { high, low, humidity, userId, petId } = req.body;
+  const { high, low, humidity, petId } = req.body;
 
   if (
     typeof high === "undefined" ||
     typeof low === "undefined" ||
     typeof humidity === "undefined" ||
-    typeof userId === "undefined" ||
     typeof petId === "undefined"
   ) {
     res
@@ -18,15 +17,33 @@ exports.submitDataPoint = functions.https.onRequest(async (req, res) => {
       .send({
         success: false,
         message:
-          "Missing data points. Required: high, low, humidity, userId and petId"
+          "Missing data points. Required: high, low, humidity and petId"
       })
       .end();
 
     return;
   }
 
-  const petDoc = admin.firestore().doc(`users/${userId}/pets/${petId}`);
+  const petDoc = admin.firestore().doc(`pets/${petId}`);
   const petSnapshot = await petDoc.get();
+
+  if (!petSnapshot.exists) {
+    await petDoc.set({
+      name: petId,
+      temps: [
+        {
+          w: Date.now(),
+          h: high,
+          l: low,
+          hu: humidity
+        }
+      ]
+    });
+
+    res.send({ success: true }).end();
+    return;
+  }
+
   const petData = petSnapshot.data();
 
   if (typeof petData === "undefined") {
