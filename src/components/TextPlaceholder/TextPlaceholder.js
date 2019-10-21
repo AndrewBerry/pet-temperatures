@@ -3,11 +3,8 @@ import "./TextPlaceholder.css";
 
 export function TextPlaceholder({ width }) {
   return (
-    <span
-      className="TextPlaceholder"
-      style={{width: `${width}em`}}
-    >
+    <span className="TextPlaceholder" style={{ width: `${width}em` }}>
       &nbsp;
     </span>
-  )
+  );
 }

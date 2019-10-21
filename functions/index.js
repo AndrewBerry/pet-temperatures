@@ -16,8 +16,7 @@ exports.submitDataPoint = functions.https.onRequest(async (req, res) => {
       .status(401)
       .send({
         success: false,
-        message:
-          "Missing data points. Required: high, low, humidity and petId"
+        message: "Missing data points. Required: high, low, humidity and petId"
       })
       .end();
 

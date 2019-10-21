@@ -7,7 +7,7 @@ import { Chart } from "../Chart/Chart";
 export function Pet({ name, image, temps }) {
   const { w, l, h, hu } = temps[temps.length - 1];
 
-  const [ timeAgo, setTimeAgo ] = useState();
+  const [timeAgo, setTimeAgo] = useState();
   useEffect(() => {
     function recalculateTimeAgo() {
       setTimeAgo(ta(new Date(w)));
@@ -18,8 +18,8 @@ export function Pet({ name, image, temps }) {
 
     return () => {
       clearInterval(intervalId);
-    }
-  }, [ w ]);
+    };
+  }, [w]);
 
   const humidity = parseInt(hu);
 
@@ -30,22 +30,34 @@ export function Pet({ name, image, temps }) {
       </div>
 
       <div className="Pet__details">
-        <div className="Pet__image" style={{backgroundImage: `url(${image})`}}></div>
+        <div
+          className="Pet__image"
+          style={{ backgroundImage: `url(${image})` }}
+        ></div>
         <div className="Pet__name">{name}</div>
       </div>
       <div className="Pet__meta">{timeAgo}</div>
 
       <div className="Pet__value Pet__value--low">
         <div className="Pet__valueTitle">Low</div>
-        <div className="Pet__valueValue">{l}<span className="Pet__valueUnit">&deg;</span></div>
+        <div className="Pet__valueValue">
+          {l}
+          <span className="Pet__valueUnit">&deg;</span>
+        </div>
       </div>
       <div className="Pet__value Pet__value--high">
         <div className="Pet__valueTitle">High</div>
-        <div className="Pet__valueValue">{h}<span className="Pet__valueUnit">&deg;</span></div>
+        <div className="Pet__valueValue">
+          {h}
+          <span className="Pet__valueUnit">&deg;</span>
+        </div>
       </div>
       <div className="Pet__value Pet__value--humidity">
         <div className="Pet__valueTitle">Humidity</div>
-        <div className="Pet__valueValue">{humidity}<span className="Pet__valueUnit Pet__valueUnit--small">%</span></div>
+        <div className="Pet__valueValue">
+          {humidity}
+          <span className="Pet__valueUnit Pet__valueUnit--small">%</span>
+        </div>
       </div>
     </div>
   );

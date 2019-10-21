@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import firebase from "firebase/app";
 
 export function useFirebaseDoc(docPath) {
-  const [ data, setData ] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     setData(null);
@@ -16,7 +16,7 @@ export function useFirebaseDoc(docPath) {
         console.error("Error: ", error);
       }
     );
-  }, [ docPath ]);
+  }, [docPath]);
 
   return data;
 }
