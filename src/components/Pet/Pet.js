@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import ta from "s-ago";
 
 import "./Pet.css";
+import { Chart } from "../Chart/Chart";
 
-export function Pet({ name, temps }) {
+export function Pet({ name, image, temps }) {
   const { w, l, h, hu } = temps[temps.length - 1];
 
   const [ timeAgo, setTimeAgo ] = useState();
@@ -24,9 +25,14 @@ export function Pet({ name, temps }) {
 
   return (
     <div className="Pet">
-      <div className="Pet__chart"></div>
+      <div className="Pet__chart">
+        <Chart temps={temps} />
+      </div>
 
-      <div className="Pet__name">{name}</div>
+      <div className="Pet__details">
+        <div className="Pet__image" style={{backgroundImage: `url(${image})`}}></div>
+        <div className="Pet__name">{name}</div>
+      </div>
       <div className="Pet__meta">{timeAgo}</div>
 
       <div className="Pet__value Pet__value--low">

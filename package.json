@@ -1,5 +1,6 @@
 {
   "name": "pet-temperatures",
+  "homepage": "https://andrewberry.github.io/pet-temperatures",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +10,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier src/**.js functions/**.js --write",
-    "serve": "firebase serve --only functions"
+    "serve": "firebase serve --only functions",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }

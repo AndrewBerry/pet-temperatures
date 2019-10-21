@@ -1,3 +1,24 @@
 .App {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
   padding: 1rem;
+}
+
+@media (min-width: 700px) {
+  .App {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1050px) {
+  .App {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .App {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

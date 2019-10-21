@@ -1,0 +1,22 @@
+.Chart {
+  position: relative;
+  background-color: #2d3748;
+}
+
+.Chart__tick {
+  color: #fff;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 0.8em;
+}
+
+.Chart__tick--min {
+  top: unset;
+  bottom: 0.5rem;
+}
+
+.Chart__img {
+  display: block;
+  width: 100%;
+}

@@ -7,6 +7,7 @@ export function App() {
   return (
     <div className="App">
       <PetContainer petId="cynthia" />
+      <PetContainer petId="bassi" />
     </div>
   );
 }
