@@ -11,7 +11,7 @@ export function PetLoading() {
       <div className="Pet__details">
         <div className="Pet__image"></div>
         <div className="Pet__name">
-          <TextPlaceholder width={2 + Math.floor(Math.random() * 4)} />
+          <TextPlaceholder width={2 + Math.floor(Math.random() * 3)} />
         </div>
       </div>
       <div className="Pet__meta">

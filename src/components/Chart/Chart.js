@@ -47,8 +47,12 @@ export function Chart({ temps }) {
 
   return (
     <div className="Chart">
-      <div className="Chart__tick">{maxTemp}&deg;</div>
-      <div className="Chart__tick Chart__tick--min">{minTemp}&deg;</div>
+      {temps.length > 0 && (
+        <>
+          <div className="Chart__tick">{maxTemp}&deg;</div>
+          <div className="Chart__tick Chart__tick--min">{minTemp}&deg;</div>
+        </>
+      )}
 
       <svg
         className="Chart__img"
