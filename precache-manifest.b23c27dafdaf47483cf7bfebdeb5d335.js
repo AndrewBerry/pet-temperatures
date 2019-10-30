@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "52c28cfc81d49278d52b0cdcceb4142e",
+    "revision": "cb98c20cd6e86c602a78231ca5b8c8f3",
     "url": "/pet-temperatures/index.html"
   },
   {
