@@ -1,7 +1,16 @@
+require("dotenv").config();
+
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const twilio = require("twilio")(process.env.TWILLO_ACCOUNT_SID, process.env.TWILLO_AUTH_TOKEN);
 
 admin.initializeApp();
+
+const fieldLabels = {
+  high: "High temp.",
+  low: "Low temp.",
+  humidity: "Humidity"
+}
 
 exports.submitDataPoint = functions.https.onRequest(async (req, res) => {
   const { high, low, humidity, petId } = req.body;
@@ -70,6 +79,45 @@ exports.submitDataPoint = functions.https.onRequest(async (req, res) => {
         hu: humidity
       }
     ]
+  });
+
+  const alertSnapshots = await admin.firestore().collection("alerts")
+    .where("petIds", "array-contains", petId)
+    .where("lastTriggered", "<=", Date.now() - (1000 * 60 * 60 * 60))
+    .get();
+
+  alertSnapshots.forEach(async doc => {
+    const { field, operator, threshold, recipient } = doc.data();
+
+    let message = null;
+
+    switch (operator) {
+      case "GT":
+        if (req.body[field] > threshold) {
+          message = `Pet Temperature Alert:\n\n${petData.name}: ${fieldLabels[field]} is exceeding ${threshold}`;
+        }
+        break;
+      case "LT":
+        if (req.body[field] > threshold) {
+          message = `Pet Temperature Alert:\n\n${petData.name}: ${fieldLabels[field]} is below ${threshold}`;
+        }
+        break;
+    }
+
+    if (message === null) {
+      return;
+    }
+
+    await twilio.messages
+      .create({
+        body: message,
+        from: "PETTEMPS",
+        to: recipient
+      });
+
+    await admin.firestore().doc(`alerts/${doc.id}`).update({
+      lastTriggered: Date.now()
+    });
   });
 
   res.send({ success: true }).end();
