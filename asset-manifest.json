@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/pet-temperatures/static/css/main.3d61557e.chunk.css",
-    "main.js": "/pet-temperatures/static/js/main.bd953d72.chunk.js",
-    "main.js.map": "/pet-temperatures/static/js/main.bd953d72.chunk.js.map",
+    "main.js": "/pet-temperatures/static/js/main.7f2de55e.chunk.js",
+    "main.js.map": "/pet-temperatures/static/js/main.7f2de55e.chunk.js.map",
     "runtime-main.js": "/pet-temperatures/static/js/runtime-main.0799ead0.js",
     "runtime-main.js.map": "/pet-temperatures/static/js/runtime-main.0799ead0.js.map",
-    "static/js/2.8b2a3ba1.chunk.js": "/pet-temperatures/static/js/2.8b2a3ba1.chunk.js",
-    "static/js/2.8b2a3ba1.chunk.js.map": "/pet-temperatures/static/js/2.8b2a3ba1.chunk.js.map",
+    "static/js/2.ecf25b74.chunk.js": "/pet-temperatures/static/js/2.ecf25b74.chunk.js",
+    "static/js/2.ecf25b74.chunk.js.map": "/pet-temperatures/static/js/2.ecf25b74.chunk.js.map",
     "index.html": "/pet-temperatures/index.html",
-    "precache-manifest.c80026d28f0e6ebd76fc0a3600f13aec.js": "/pet-temperatures/precache-manifest.c80026d28f0e6ebd76fc0a3600f13aec.js",
+    "precache-manifest.1265f4337e70b7004a58da1749743b73.js": "/pet-temperatures/precache-manifest.1265f4337e70b7004a58da1749743b73.js",
     "service-worker.js": "/pet-temperatures/service-worker.js",
     "static/css/main.3d61557e.chunk.css.map": "/pet-temperatures/static/css/main.3d61557e.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.0799ead0.js",
-    "static/js/2.8b2a3ba1.chunk.js",
+    "static/js/2.ecf25b74.chunk.js",
     "static/css/main.3d61557e.chunk.css",
-    "static/js/main.bd953d72.chunk.js"
+    "static/js/main.7f2de55e.chunk.js"
   ]
 }
