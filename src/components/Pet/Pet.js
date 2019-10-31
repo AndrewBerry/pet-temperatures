@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ta from "s-ago";
+import { format } from "date-fns";
 
 import "./Pet.css";
 import { Chart } from "../Chart/Chart";
@@ -24,6 +25,8 @@ export function Pet({ name, image, temps, dataPointOverrideIndex, setDataPointOv
 
   const humidity = parseInt(hu);
 
+  const formattedWhen = format(new Date(w), "h:mmaa d/M");
+
   return (
     <div className="Pet">
       <div className="Pet__chart">
@@ -37,7 +40,7 @@ export function Pet({ name, image, temps, dataPointOverrideIndex, setDataPointOv
         ></div>
         <div className="Pet__name">{name}</div>
       </div>
-      <div className="Pet__meta">{timeAgo}</div>
+      <div className="Pet__meta">{dataPointOverrideIndex > -1 ? formattedWhen : timeAgo}</div>
 
       <div className="Pet__value Pet__value--low">
         <div className="Pet__valueTitle">Low</div>
