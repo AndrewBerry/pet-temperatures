@@ -27,7 +27,7 @@ export function Pet({ name, image, temps, dataPointOverrideIndex, setDataPointOv
   return (
     <div className="Pet">
       <div className="Pet__chart">
-        <Chart temps={temps} setDataPointOverrideIndex={setDataPointOverrideIndex} />
+        <Chart temps={temps} dataPointOverrideIndex={dataPointOverrideIndex} setDataPointOverrideIndex={setDataPointOverrideIndex} />
       </div>
 
       <div className="Pet__details">

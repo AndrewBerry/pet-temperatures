@@ -1,12 +1,21 @@
 import React from "react";
 import "./Chart.css";
 
-export function Chart({ temps, setDataPointOverrideIndex }) {
-  function handleMouseMove({clientX, target}) {
+export function Chart({ temps, dataPointOverrideIndex, setDataPointOverrideIndex }) {
+  function touchStart({touches, target}) {
     const { left, width } = target.getBoundingClientRect();
-    const index = Math.floor(((clientX - left) / width) * temps.length);
+    const { clientX } = touches[0];
 
-    setDataPointOverrideIndex(Math.max(index, 0));
+    const leftPerc = (clientX - left) / width;
+    const clampedLeftPerc = Math.max(0, Math.min(leftPerc, 1));
+
+    const dataPointIndex = Math.floor((temps.length - 1) * clampedLeftPerc);
+
+    setDataPointOverrideIndex(dataPointIndex);
+  }
+
+  function touchEnd() {
+    setDataPointOverrideIndex(-1);
   }
 
   const minTemp =
@@ -67,7 +76,11 @@ export function Chart({ temps, setDataPointOverrideIndex }) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        onMouseMoveCapture={handleMouseMove}
+
+        onTouchStartCapture={touchStart}
+        onTouchMoveCapture={touchStart}
+        onTouchCancelCapture={touchEnd}
+        onTouchEndCapture={touchEnd}
       >
         <defs>
           <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
@@ -84,6 +97,14 @@ export function Chart({ temps, setDataPointOverrideIndex }) {
           strokeDasharray="2 1"
           fill="none"
         />
+
+        {dataPointOverrideIndex && (
+          <path
+            d={`M${width * dataPointOverrideIndex} 0 L${width * dataPointOverrideIndex} 50`}
+            strokeWidth="0.5"
+            stroke="white"
+          />
+        )}
       </svg>
     </div>
   );
