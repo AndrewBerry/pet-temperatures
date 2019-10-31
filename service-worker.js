@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pet-temperatures/precache-manifest.7e340064d0bdfeb3d8402da04cebeba5.js"
+  "/pet-temperatures/precache-manifest.53f2f03cff21245561c07e63ba5e6869.js"
 );
 
 self.addEventListener('message', (event) => {
