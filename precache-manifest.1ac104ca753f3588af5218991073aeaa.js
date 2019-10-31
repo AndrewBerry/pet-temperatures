@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cb98c20cd6e86c602a78231ca5b8c8f3",
+    "revision": "6f563bc5b1ada412f30c110a0601e6ba",
     "url": "/pet-temperatures/index.html"
   },
   {
-    "revision": "c14f54dcaa79469d6145",
+    "revision": "23a5459a6fdd5de5328b",
     "url": "/pet-temperatures/static/css/main.b4fa4fc4.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pet-temperatures/static/js/2.8b2a3ba1.chunk.js"
   },
   {
-    "revision": "c14f54dcaa79469d6145",
-    "url": "/pet-temperatures/static/js/main.2acd5a57.chunk.js"
+    "revision": "23a5459a6fdd5de5328b",
+    "url": "/pet-temperatures/static/js/main.b5bf00c2.chunk.js"
   },
   {
     "revision": "826e22dde95aec4d4420",
