@@ -4,8 +4,9 @@ import ta from "s-ago";
 import "./Pet.css";
 import { Chart } from "../Chart/Chart";
 
-export function Pet({ name, image, temps }) {
-  const { w, l, h, hu } = temps[temps.length - 1];
+export function Pet({ name, image, temps, dataPointOverrideIndex, setDataPointOverrideIndex }) {
+  const dataPointIndex = dataPointOverrideIndex > -1 ? dataPointOverrideIndex : temps.length - 1;
+  const { w, l, h, hu } = temps[dataPointIndex];
 
   const [timeAgo, setTimeAgo] = useState();
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Pet({ name, image, temps }) {
   return (
     <div className="Pet">
       <div className="Pet__chart">
-        <Chart temps={temps} />
+        <Chart temps={temps} setDataPointOverrideIndex={setDataPointOverrideIndex} />
       </div>
 
       <div className="Pet__details">

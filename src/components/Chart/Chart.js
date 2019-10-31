@@ -1,7 +1,14 @@
 import React from "react";
 import "./Chart.css";
 
-export function Chart({ temps }) {
+export function Chart({ temps, setDataPointOverrideIndex }) {
+  function handleMouseMove({clientX, target}) {
+    const { left, width } = target.getBoundingClientRect();
+    const index = Math.floor(((clientX - left) / width) * temps.length);
+
+    setDataPointOverrideIndex(Math.max(index, 0));
+  }
+
   const minTemp =
     Math.floor(
       temps.reduce((m, t) => {
@@ -60,6 +67,7 @@ export function Chart({ temps }) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        onMouseMoveCapture={handleMouseMove}
       >
         <defs>
           <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
